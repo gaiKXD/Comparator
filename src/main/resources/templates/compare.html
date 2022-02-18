@@ -26,7 +26,7 @@
       </thead>
 
       <tbody>
-      <tr th:each="tank : ${tanks}">
+      <tr th:id="${tank.id}" th:each="tank : ${tanks}">
         <td th:text="${tank.getId()}" />
         <td th:text="${tank.getName()}" />
         <td th:text="${tank.getNation()}" />
@@ -34,6 +34,9 @@
         <td th:text="${tank.getType()}" />
         <td th:text="${tank.getDamage()}" />
         <td th:text="${tank.getReload()}" />
+        <td>
+          <a th:href="@{/tanks/tank/{id}(id=${tank.id})}"> Upgrade </a>
+        </td>
       </tr>
       </tbody>
     </table>

@@ -1,15 +1,12 @@
 package com.agaik.comparator.controllers;
 
 
-
 import com.agaik.comparator.model.Tank;
-import com.agaik.comparator.repository.TankRepository;
 import com.agaik.comparator.service.CompareService;
 import com.agaik.comparator.service.TankService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,8 +30,17 @@ public class CompareController {
     @GetMapping("/compare/add/{id}")
     public String addToList(@PathVariable int id){
         Tank tank = tankService.getById(id);
-        compareService.addToList(tank);
+        Tank tank1 = new Tank();
+        tank1.setName(tank.getName());
+        compareService.addToList(tank1);
         return "compare";
+    }
+
+    @GetMapping("/tanks/tank/{id}")
+    public String upgrade(@PathVariable int id){
+        Tank tank = tankService.getById(id);
+        compareService.upgrade(tank);
+        return "resultTank";
     }
 
     @GetMapping("/findtank")
@@ -45,16 +51,15 @@ public class CompareController {
 
     @PostMapping("/findtank")
     public String tankForm(@ModelAttribute Tank tank) {
+        String name = tank.getName();
 
-        Tank tank1 = tankService.findByName(tank.getName());
+        tank = tankService.findByName(name).get(0);
+        Tank tank2 = new Tank(tank.getName(), tank.getTier(), tank.getType(),
+        tank.getNation(), tank.getDamage(), tank.getReload());
 
-        if(tank1 == null  ) {
-            System.out.println("Incorect form");
-            return "resultRejected";
-        }
-
-        compareService.addToList(tank1);
-        return "result";
-
+        tankService.save(tank2);
+        compareService.addToList(tank2);
+        return "resultTank";
     }
+
 }

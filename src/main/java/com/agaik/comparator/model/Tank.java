@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Tank {
@@ -21,6 +22,26 @@ public class Tank {
 
     public Tank() {
 
+    }
+
+
+    public Tank(int id, String name, String tier, String type, String nation, int damage, float reload) {
+        this.id = id;
+        this.name = name;
+        this.tier = tier;
+        this.type = type;
+        this.nation = nation;
+        this.damage = damage;
+        this.reload = reload;
+    }
+
+    public Tank(String name, String tier, String type, String nation, int damage, float reload) {
+        this.name = name;
+        this.tier = tier;
+        this.type = type;
+        this.nation = nation;
+        this.damage = damage;
+        this.reload = reload;
     }
 
     public int getId() {
@@ -79,23 +100,17 @@ public class Tank {
         this.reload = reload;
     }
 
-    public Tank(int id, String name, String tier, String type, String nation, int damage, float reload) {
-        this.id = id;
-        this.name = name;
-        this.tier = tier;
-        this.type = type;
-        this.nation = nation;
-        this.damage = damage;
-        this.reload = reload;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tank tank = (Tank) o;
+        return name.equals(tank.name);
     }
 
-    public Tank(String name, String tier, String type, String nation, int damage, float reload) {
-        this.name = name;
-        this.tier = tier;
-        this.type = type;
-        this.nation = nation;
-        this.damage = damage;
-        this.reload = reload;
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 
     @Override

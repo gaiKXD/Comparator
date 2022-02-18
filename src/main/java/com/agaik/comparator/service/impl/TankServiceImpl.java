@@ -5,7 +5,9 @@ import com.agaik.comparator.repository.TankRepository;
 import com.agaik.comparator.service.TankService;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Service
@@ -18,8 +20,13 @@ public class TankServiceImpl implements TankService {
         this.tankRepository = tankRepository;
     }
 
-    public List<Tank> findAll() {
-        return tankRepository.findAll();
+    public Set<Tank> findAll() {
+        List<Tank> tanks =  tankRepository.findAll();
+
+
+        return new HashSet<>(tanks);
+
+
     }
     public void save(Tank tank) {
         tankRepository.save(tank);
@@ -29,8 +36,11 @@ public class TankServiceImpl implements TankService {
         return tankRepository.getById(id);
     }
 
-    public Tank findByName(String name){
+    public List<Tank> findByName(String name){
         return tankRepository.findByName(name);
     }
+
+
+
 
 }
