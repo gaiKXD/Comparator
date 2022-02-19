@@ -26,14 +26,11 @@ class TankServiceImplTest {
     void getByIdShouldReturnTank(){
         tank.setName("test");
         when(tankRepository.getById(1)).thenReturn(tank);
-
         String current = tankService.getById(1).getName();
-
         String wanted = "test";
-
-
         assertEquals(wanted, current);
 
     }
+    
 
 }

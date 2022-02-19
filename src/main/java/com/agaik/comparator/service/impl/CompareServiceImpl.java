@@ -22,9 +22,9 @@ public class CompareServiceImpl implements CompareService {
     }
 
     @Override
-    public Tank upgrade(Tank tank) {
+    public Tank loader(Tank tank) {
         Tank tank1 = findTank(tank);
-        tank1.setReload(tank1.getReload() * 2);
+        tank1.setReload((float) (tank1.getReload() * 0.9));
         return tank;
     }
 

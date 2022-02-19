@@ -4,19 +4,49 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="create.css">
   <meta charset="UTF-8">
+  <style>
+    body {
+
+    }
+
+    .content {
+      max-width: 500px;
+      margin: auto;
+      padding: 10px;
+    }
+    .content2 {
+        max-width: 1100px;
+        margin: auto;
+        padding: 10px;
+    }
+    .image {
+        width: 300px;
+        height: 219px;
+    }
+
+  </style>
   <title>Comparator</title>
 </head>
 <body>
-
+<div id="menu">
   <a href="/" class="btn btn-secondary" > Main</a>
   <a href="/compare" class="btn btn-secondary" > Compare</a>
   <br><br>
+</div>
+<div class="content2">
+    <img src="obj430.png"class="image">
+    <img src="cs.png" class="image">
+    <img src="leo1.png"class="image">
+</div>
+<div th:each="tank : ${tanks}" class="content">
+      <h1 th:text="${tank.getName()}" />
+      <a th:text="'Nation:' + ${tank.getNation()}" />
+      <a th:text="'Type:' + ${tank.getType()}" />
+      <a th:text="'Tier:' + ${tank.getTier()}" />
+      </div>
 
+  </div>
 
-  <div th:each="tank : ${tanks}" class="tank">
-  <div th:text="${tank.getName()}" class="tank">
-  </div>
-  </div>
 
 
 </body>

@@ -37,10 +37,10 @@ public class CompareController {
     }
 
     @GetMapping("/tanks/tank/{id}")
-    public String upgrade(@PathVariable int id){
+    public String loader(@PathVariable int id){
         Tank tank = tankService.getById(id);
-        compareService.upgrade(tank);
-        return "resultTank";
+        compareService.loader(tank);
+        return "modification";
     }
 
     @GetMapping("/findtank")

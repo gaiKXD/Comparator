@@ -8,5 +8,5 @@ public interface CompareService {
 
  void addToList(Tank tank);
  List<Tank> getTanks();
- Tank upgrade(Tank tank);
+ Tank loader(Tank tank);
 }

@@ -9,5 +9,4 @@ public class ComparatorApplication {
     public static void main(String[] args) {
         SpringApplication.run(ComparatorApplication.class, args);
     }
-
 }

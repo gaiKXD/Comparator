@@ -10,13 +10,13 @@
 <body>
 <div>
     <br>
-    <span th:if="${user == null}"> <a href="/login" class="btn btn-secondary"> Login</a> </span>
-    <span th:if="${user != null}"><a href="/list" class="btn btn-secondary"> View all Tanks</a> </span>
+    <span th:if="${user == null}"> <a href="/login" class="btn btn-secondary"> Login</a><br><br><br> </span>
+    <a href="/list" class="btn btn-secondary"> View all Tanks</a>
     <br><br>
-    <span th:if="${user != null}"> <a href="/compare" class="btn btn-secondary"> Compare</a></span>
+    <a href="/compare" class="btn btn-secondary"> Compare</a>
 
     <br><br>
-    <span th:if="${user != null}"> <a href="/" class="btn btn-secondary"> Create new tank</a> </span>
+    <span th:if="${user != null}"> <a href="/tanks/create-form" class="btn btn-secondary"> Create new tank(prototype)</a> </span>
 
 
 </div>
